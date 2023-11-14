@@ -16,7 +16,7 @@ from src.utils import save_object, evaluate_model
 
 @dataclass
 class TrainerConfig:
-    model_file_path = os.path.join("../../artifacts", "model.pkl")
+    model_file_path = os.path.join("artifacts", "model.pkl")
 
 class Trainer:
     def __init__(self):
@@ -77,7 +77,10 @@ class Trainer:
             model_report = evaluate_model(X_train, y_train, X_test, y_test, models, params)
             print(model_report)
 
-            best_score, best_model = max(zip(model_report.values(), model_report.keys()))
+            max_ = max(zip(model_report.values(), model_report.keys()))
+
+            best_score, best_model = max_[0], models[max_[1]]
+            print(best_model, best_score)
 
             if best_score < 0.8:
                 raise CustomException("No best model found")

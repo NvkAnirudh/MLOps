@@ -13,9 +13,9 @@ from dataclasses import dataclass
 
 @dataclass
 class DataIngestionConfig:
-    train_data_path: str = os.path.join('../../artifacts', "train.csv")
-    test_data_path: str = os.path.join('../../artifacts', "test.csv")
-    raw_data_path: str = os.path.join('../../artifacts', "raw_data.csv")
+    train_data_path: str = os.path.join('artifacts', "train.csv")
+    test_data_path: str = os.path.join('artifacts', "test.csv")
+    raw_data_path: str = os.path.join('artifacts', "raw_data.csv")
 
 class DataIngestion:
     def __init__(self):
@@ -24,7 +24,7 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Started data ingestion component")
         try:
-            df = pd.read_csv("../../notebook/data/StudentsPerformance.csv")  
+            df = pd.read_csv("notebook/data/StudentsPerformance.csv")  
             df.rename(columns={'race/ethnicity':'race_ethnicity', 'parental level of education':'parental_level_of_education', 'test preparation course':'test_preparation_course','math score':'math_score',
                    'reading score':'reading_score', 'writing score':'writing_score'}, inplace=True)          
             logging.info("Read the required data as pandas dataframe")
