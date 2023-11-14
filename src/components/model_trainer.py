@@ -40,6 +40,7 @@ class Trainer:
                 "XGBRegressor": XGBRegressor(),
                 "CatBoosting Regressor": CatBoostRegressor(verbose=False),
                 "AdaBoost Regressor": AdaBoostRegressor(),
+                "KNeighbors Regressor": KNeighborsRegressor()
             }
             params={
                 "Decision Tree": {
@@ -66,6 +67,9 @@ class Trainer:
                 "AdaBoost Regressor":{
                     'learning_rate':[.1,.01,0.5,.001],
                     'n_estimators': [8,16,32,64,128,256]
+                },
+                "KNeighbors Regressor":{
+                    'n_neighbors': [5,7,9,11]
                 }
                 
             }
