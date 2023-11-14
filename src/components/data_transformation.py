@@ -39,7 +39,7 @@ class DataTransformation:
             num_pipeline = Pipeline(
                 steps = [
                     ("Imputer", SimpleImputer(strategy="median")),
-                    ("Scaler", StandardScaler(with_mean=False))
+                    ("Scaler", StandardScaler())
                 ]
             )
 
@@ -47,7 +47,7 @@ class DataTransformation:
                 steps = [
                     ("Imputer", SimpleImputer(strategy="most_frequent")),
                     ("OneHotEncoder", OneHotEncoder()),
-                    ("Scaler", StandardScaler(with_mean=False))
+                    ("Scaler", StandardScaler())
                 ]
             )
 
@@ -87,7 +87,7 @@ class DataTransformation:
             logging.info("Applying preprocessor object on training and testing dataframe")
 
             train_features = preprocessing_obj.fit_transform(input_features_train)
-            test_features = preprocessing_obj.fit_transform(input_features_test)
+            test_features = preprocessing_obj.transform(input_features_test)
 
             train_data = np.c_[train_features, np.array(target_feature_train)]
             test_data = np.c_[test_features, np.array(target_feature_test)]

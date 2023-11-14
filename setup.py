@@ -13,7 +13,7 @@ def get_requirements(file_path:str)->List[str]:
     requirements = []
     with open(file_path) as file_object:
         requirements = file_object.readlines()
-        [req.replace("\n","") for req in requirements]
+        requirements = [req.replace("\n","") for req in requirements]
 
         if "-e ." in requirements:
             requirements.remove("-e .")
